@@ -1,50 +1,105 @@
+/* --- Các thiết lập cơ bản từ starter code --- */
 body {
     background-color: #dedede;
+    margin: 0;
+    padding: 20px;
 }
 
 h1 {
     text-align: center;
-    font-family:Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 32px;
 }
 
 a {
     color: #000;
     text-decoration: none;
-    font-family:Arial, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 p {
-   font-size: 25px;
-   font-family:Arial, sans-serif;
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+    text-align: center;
 }
 
-img{
-  width:100%;
+img {
+    width: 100%;
+    display: block; /* Tránh khoảng trống dưới ảnh */
 }
 
-
-p{
-  text-align:center;
+/* Thêm định dạng cơ bản cho figure */
+figure {
+    margin: 0;
+    background-color: #fff; /* Màu nền sáng mặc định */
+    border: 2px solid transparent; /* Chuẩn bị viền cho chế độ tối */
+    overflow: hidden; /* Để ảnh không bị tràn khi bo tròn */
+    text-align: center;
+    padding: 10px;
 }
 
-div img{
-    width:150px;
-    height: 150px;
-    display:block;
-    margin:auto;
+figcaption {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    padding-top: 10px;
 }
 
-div{
-  display: inline-block;
-  width: 24%;
-  margin: 5px;
-  padding: 2px;
+/* --- Yêu cầu 4: Layout Mobile First --- */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 cột */
+    gap: 10px; /* Khoảng cách 10px */
 }
 
+/* --- Yêu cầu 5: Tablet View (từ 772px) --- */
+@media (min-width: 772px) {
+    .grid {
+        grid-template-columns: 1fr 1fr; /* 2 cột */
+    }
 
+    .grid figure {
+        border-radius: 50%; /* Tạo hình tròn */
+    }
 
+    .grid figure:last-child {
+        grid-column: 1 / -1; /* Figure cuối chiếm cả 2 cột */
+    }
+}
 
+/* --- Yêu cầu 6: Large Screen View (từ 992px) --- */
+@media (min-width: 992px) {
+    .grid figure {
+        border-radius: 0; /* Xóa bo tròn */
+    }
+
+    .grid figure:nth-child(3n) {
+        grid-column: span 2; /* Mỗi figure thứ 3 chiếm 2 cột */
+    }
+}
+
+/* --- Yêu cầu 7: Prefers Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto; /* Tắt cuộn mượt */
+    }
+}
+
+/* --- Yêu cầu 8: Dark Color Scheme --- */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #222; /* Tùy chỉnh màu nền trang tối hơn */
+    }
+    
+    p, h1, a {
+        color: #ddd; /* Đổi màu chữ cơ bản để dễ đọc trên nền tối */
+    }
+
+    .grid figure {
+        background-color: #333; /* Màu tối cho figure */
+        color: #ffeb3b; /* Chữ màu sáng (hơi vàng) */
+        border-color: #000; /* Viền màu đen */
+    }
+}
 
 
 
